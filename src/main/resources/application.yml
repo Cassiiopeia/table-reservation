@@ -1,0 +1,17 @@
+server:
+  port: 8090
+  shutdown: graceful
+
+spring:
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:mariadb://220.85.169.165:3306/table_reservation
+    username: chan4760
+    password: Tjtocks178@
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
