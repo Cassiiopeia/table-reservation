@@ -1,21 +1,27 @@
 package com.suh.tablereservation.config;
 
 import com.suh.tablereservation.domain.common.UserType;
-import com.suh.tablereservation.domain.common.UserVo;
+import com.suh.tablereservation.domain.common.UserDto;
+import com.suh.tablereservation.util.Aes256Util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class JwtAuthenticationProvider {
-    private final String secretKey = "secretKey";
-    private final long tokenValidTime = 1000L * 60 * 60 * 24;
+    @Value("${jwt.secretKey}")
+    private String secretKey;
+
+    @Value("${jwt.tokenValidTime}")
+    private long tokenValidTime;
 
     public String createToken(String userPk, Long id, UserType userType){
         Claims claims = Jwts.claims()
-                .setSubject(userPk)
+                .setSubject(Aes256Util.encrypt(userPk))
                 .setId(id.toString());
         claims.put("roles",userType);
         Date now = new Date();
@@ -38,12 +44,17 @@ public class JwtAuthenticationProvider {
         }
     }
 
-    public UserVo getUserVo (String token){
+    public UserDto getUserVo (String token){
         Claims claims = Jwts.parser()
                 .setSigningKey(secretKey)
                 .parseClaimsJws(token)
                 .getBody();
-        return new UserVo(Long.valueOf(claims.getId()), claims.getSubject());
+        UserType userType =
+                UserType.valueOf(claims.get("roles", String.class));
+        return new UserDto(
+                Long.valueOf(Objects.requireNonNull(Aes256Util.decrypt(claims.getId()))),
+                Aes256Util.decrypt(claims.getSubject()),
+                userType);
     }
 
 }

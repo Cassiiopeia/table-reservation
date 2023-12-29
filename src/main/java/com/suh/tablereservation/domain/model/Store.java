@@ -19,6 +19,6 @@ public class Store extends BaseEntity {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private Owner owner;
+    @JoinColumn(name = "partner_id")
+    private Partner partner;
 }

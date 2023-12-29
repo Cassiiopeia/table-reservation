@@ -1,0 +1,24 @@
+### sign-up-controller - customer
+POST http://localhost:8085/signup/customer
+Content-Type: application/json
+
+{
+  "name": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string",
+  "birth": "2023-12-29"
+}
+
+
+### sign-up-controller - partner
+POST http://localhost:8085/signup/partner
+Content-Type: application/json
+
+{
+  "name": "string",
+  "email": "string",
+  "password": "string",
+  "phone": "string",
+  "birth": "2023-12-29T13:11:15.724Z"
+}
