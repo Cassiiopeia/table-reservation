@@ -4,6 +4,7 @@ import com.suh.tablereservation.domain.SignInForm;
 import com.suh.tablereservation.service.SignInService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,12 +15,12 @@ public class SignInController {
     public final SignInService signInService;
 
 
-    @RequestMapping("/customer")
+    @PostMapping("/customer")
     public ResponseEntity<String> customerSignIn(SignInForm signInForm){
         return ResponseEntity.ok("");
     }
 
-    @RequestMapping("/partner")
+    @PostMapping("/partner")
     public ResponseEntity<String> partnerSignIn(SignInForm signInForm){
 
         return ResponseEntity.ok("");

@@ -28,8 +28,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
 
 
-    //jwt , security
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //jwt , security(삭제)
     implementation 'org.springframework.security:spring-security-test'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
