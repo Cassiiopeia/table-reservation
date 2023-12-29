@@ -2,7 +2,7 @@ package com.suh.tablereservation.domain;
 
 import lombok.Getter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 public class SignUpForm {
@@ -10,5 +10,5 @@ public class SignUpForm {
     private String email;
     private String password;
     private String phone;
-    private LocalDateTime birth;
+    private LocalDate birth;
 }

@@ -3,6 +3,7 @@ package com.suh.tablereservation.domain.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Partner extends BaseEntity{
 
     private String password;
     private String phone;
-    private LocalDateTime birth;
+    private LocalDate birth;
 
     private LocalDateTime verifyExpiredAt;
     private String verificationCode;

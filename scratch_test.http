@@ -3,8 +3,8 @@ POST http://localhost:8085/signup/customer
 Content-Type: application/json
 
 {
-  "name": "string",
-  "email": "string",
+  "name": "suh-customer",
+  "email": "chan4760@naver.com",
   "password": "string",
   "phone": "string",
   "birth": "2023-12-29"
@@ -16,9 +16,27 @@ POST http://localhost:8085/signup/partner
 Content-Type: application/json
 
 {
-  "name": "string",
-  "email": "string",
+  "name": "suh-partner",
+  "email": "chan4760@naver.com",
   "password": "string",
   "phone": "string",
-  "birth": "2023-12-29T13:11:15.724Z"
+  "birth": "2023-12-29"
+}
+
+### sign-in-controller - customer
+POST http://localhost:8085/signin/customer
+Content-Type: application/json
+
+{
+  "email": "chan4760@naver.com",
+  "password": "string"
+}
+
+### sign-in-controller - partner
+POST http://localhost:8085/signin/partner
+Content-Type: application/json
+
+{
+  "email": "chan4760@naver.com",
+  "password": "string"
 }

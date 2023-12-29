@@ -31,7 +31,9 @@ public class SignUpService {
                 .password(form.getPassword())
                 .phone(form.getPhone())
                 .birth(form.getBirth())
+                .verify(true) // 임시로 true로 설정함
                 .build();
+
         log.info("## SignUpService : customerSignUp : new Customer saved");
         return customerRepository.save(newCustomer);
     }
@@ -47,6 +49,7 @@ public class SignUpService {
                 .password(form.getPassword())
                 .phone(form.getPhone())
                 .birth(form.getBirth())
+                .verify(true) // 임시로 true로 설정함
                 .build();
 
         log.info("## SignUpService : partnerSignUp : new Partner saved");

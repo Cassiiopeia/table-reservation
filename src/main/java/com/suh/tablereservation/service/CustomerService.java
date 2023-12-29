@@ -12,8 +12,13 @@ import java.util.Optional;
 public class CustomerService {
     private final CustomerRepository customerRepository;
 
+    public Optional<Customer> findByEmail(String email){
+        return customerRepository.findByEmail(email);
+    }
+
     public Optional<Customer> findByIdAndEmail(Long id, String email){
         return customerRepository.findById(id).stream().filter(
                 customer -> customer.getEmail().equals(email)).findFirst();
     }
+
 }
