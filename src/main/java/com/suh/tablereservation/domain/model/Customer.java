@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,7 +24,7 @@ public class Customer extends BaseEntity {
     private String email;
     private String password;
     private String phone;
-    private LocalDateTime birth;
+    private LocalDate birth;
 
     private LocalDateTime verifyExpiredAt;
     private String verificationCode;

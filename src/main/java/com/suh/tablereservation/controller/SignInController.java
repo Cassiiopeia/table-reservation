@@ -16,14 +16,15 @@ public class SignInController {
 
 
     @PostMapping("/customer")
-    public ResponseEntity<String> customerSignIn(SignInForm signInForm){
-        return ResponseEntity.ok("");
+    public ResponseEntity<String> customerSignInToken(SignInForm signInForm){
+        String token = signInService.customerSignInToken(signInForm);
+        return ResponseEntity.ok(token);
     }
 
     @PostMapping("/partner")
-    public ResponseEntity<String> partnerSignIn(SignInForm signInForm){
-
-        return ResponseEntity.ok("");
+    public ResponseEntity<String> partnerSignInToken(SignInForm signInForm){
+        String token = signInService.partnerSignInToken(signInForm);
+        return ResponseEntity.ok(token);
     }
 
 }
