@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8085
   shutdown: graceful
 
 spring:
@@ -15,3 +15,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
+jwt:
+  secretKey: "secretKey"
+  tokenValidTime: 86400000 #1000L * 60 * 60 * 24
