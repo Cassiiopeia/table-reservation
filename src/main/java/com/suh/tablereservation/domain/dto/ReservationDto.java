@@ -24,6 +24,7 @@ public class ReservationDto {
                 .status(reservation.getStatus())
                 .reservationPhone(reservation.getReservationPhone())
                 .reservationName(reservation.getReservationName())
+                .numberOfPerson(reservation.getNumberOfPerson())
                 .customerId(reservation.getCustomer().getId())
                 .storeId(reservation.getStore().getId())
                 .build();

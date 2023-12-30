@@ -21,6 +21,7 @@ public class StoreService {
     private final StoreRepository storeRepository;
     private final PartnerRepository partnerRepository;
 
+    @Transactional
     public Store createStore(Long partnerId, StoreCreateForm form) {
 
         verifyCreateStore(form);
