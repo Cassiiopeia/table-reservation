@@ -1,4 +1,4 @@
-package com.suh.tablereservation.domain;
+package com.suh.tablereservation.domain.form;
 
 import lombok.Getter;
 
