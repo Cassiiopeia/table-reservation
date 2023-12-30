@@ -1,6 +1,6 @@
 package com.suh.tablereservation.service;
 
-import com.suh.tablereservation.domain.SignUpForm;
+import com.suh.tablereservation.domain.form.SignUpForm;
 import com.suh.tablereservation.domain.model.Customer;
 import com.suh.tablereservation.domain.model.Partner;
 import com.suh.tablereservation.domain.repository.CustomerRepository;
@@ -9,7 +9,6 @@ import com.suh.tablereservation.exception.CustomException;
 import com.suh.tablereservation.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service

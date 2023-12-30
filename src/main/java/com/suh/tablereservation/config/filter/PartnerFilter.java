@@ -26,7 +26,7 @@ public class PartnerFilter implements Filter {
         if (!jwtAuthenticationProvider.validateToken(token)) {
             throw new ServletException("Invalid Access!");
         }
-        UserDto userDto = jwtAuthenticationProvider.getUserVo(token);
+        UserDto userDto = jwtAuthenticationProvider.getUserDto(token);
         partnerService.findByIdAndEmail(userDto.getId(), userDto.getEmail())
                 .orElseThrow(() -> new ServletException("Invalid Access"));
         chain.doFilter(request, response);

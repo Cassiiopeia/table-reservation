@@ -1,6 +1,6 @@
 package com.suh.tablereservation.controller;
 
-import com.suh.tablereservation.domain.SignUpForm;
+import com.suh.tablereservation.domain.form.SignUpForm;
 import com.suh.tablereservation.domain.dto.CustomerDto;
 import com.suh.tablereservation.domain.dto.PartnerDto;
 import com.suh.tablereservation.domain.model.Customer;

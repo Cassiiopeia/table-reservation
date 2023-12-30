@@ -36,7 +36,7 @@ public class Aes256Util {
             byte[] decrypted = cipher.doFinal(decodedBytes);
             return new String(decrypted, StandardCharsets.UTF_8);
         } catch (Exception e) {
-            return null;
+            throw new RuntimeException("Error decrypting the text", e);
         }
     }
 

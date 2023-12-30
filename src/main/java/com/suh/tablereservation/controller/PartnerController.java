@@ -25,7 +25,7 @@ public class PartnerController {
     public ResponseEntity<PartnerDto> getInfo(
             @RequestHeader(name = "X-AUTH-TOKEN") String token
     ){
-        UserDto userDto = provider.getUserVo(token);
+        UserDto userDto = provider.getUserDto(token);
         Partner partner = partnerService.findByIdAndEmail(userDto.getId(), userDto.getEmail())
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
         return ResponseEntity.ok(PartnerDto.from(partner));

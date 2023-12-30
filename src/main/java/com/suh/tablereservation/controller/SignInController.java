@@ -1,6 +1,6 @@
 package com.suh.tablereservation.controller;
 
-import com.suh.tablereservation.domain.SignInForm;
+import com.suh.tablereservation.domain.form.SignInForm;
 import com.suh.tablereservation.service.SignInService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

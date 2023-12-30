@@ -1,16 +1,19 @@
 package com.suh.tablereservation.service;
 
 import com.suh.tablereservation.config.JwtAuthenticationProvider;
-import com.suh.tablereservation.domain.SignInForm;
+import com.suh.tablereservation.domain.form.SignInForm;
 import com.suh.tablereservation.domain.common.UserType;
 import com.suh.tablereservation.domain.model.Customer;
 import com.suh.tablereservation.domain.model.Partner;
+import com.suh.tablereservation.domain.model.Store;
 import com.suh.tablereservation.domain.repository.CustomerRepository;
 import com.suh.tablereservation.domain.repository.PartnerRepository;
 import com.suh.tablereservation.exception.CustomException;
 import com.suh.tablereservation.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
