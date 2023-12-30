@@ -11,6 +11,7 @@ import com.suh.tablereservation.exception.CustomException;
 import com.suh.tablereservation.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class StoreService {
 
     public Store editStore(Long storeId, StoreEditForm storeEditForm, Long partnerId) {
 
+        // verify PartnerStoreExist
         Store targetStore = storeRepository.findByIdAndPartnerId(storeId, partnerId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
 
@@ -61,5 +63,15 @@ public class StoreService {
         targetStore.setDescription(storeEditForm.getDescription());
 
         return storeRepository.save(targetStore);
+    }
+
+    @Transactional
+    public void deleteStore(Long partnerId, Long storeId) {
+        // verify PartnerStoreExist
+
+        storeRepository.findByIdAndPartnerId(storeId, partnerId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
+
+        storeRepository.deleteById(storeId);
     }
 }

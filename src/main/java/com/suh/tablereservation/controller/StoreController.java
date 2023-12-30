@@ -84,4 +84,14 @@ public class StoreController {
 
         return ResponseEntity.ok(StoreDto.from(store));
     }
+
+    @DeleteMapping("/partner/delete/{storeId}")
+    public ResponseEntity<Void> deleteStore(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @PathVariable Long storeId
+    ){
+        UserDto userDto = provider.getUserDto(token);
+        storeService.deleteStore(userDto.getId(),storeId);
+        return ResponseEntity.noContent().build();
+    }
 }
