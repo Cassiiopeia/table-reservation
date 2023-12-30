@@ -17,11 +17,15 @@ Content-Type: application/json
 
 {
   "name": "suh-partner",
-  "email": "chan4760@naver.com",
+  "email": "chan4760@gmail.com",
   "password": "string",
   "phone": "string",
   "birth": "2023-12-29"
 }
+
+
+######################################################
+/
 
 ### sign-in-controller - customer
 POST http://localhost:8085/signin/customer
@@ -32,13 +36,78 @@ Content-Type: application/json
   "password": "string"
 }
 
+### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwMzk3MTYzMCwiZXhwIjoxNzA0MDU4MDMwfQ.oZ-Q9eoZU6vQJguK0uOfXUYTjpbAHjgqQgBOt5irSKQ
+
 ### sign-in-controller - partner
 POST http://localhost:8085/signin/partner
 Content-Type: application/json
 
 {
-  "email": "chan4760@naver.com",
+  "email": "chan4760@gmail.com",
   "password": "string"
 }
 
-### store-contorller -
+###eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+
+######################################################
+/
+
+### store-contorller -/store/partner/edit/{storeId}
+PUT http://localhost:8085/store/partner/edit/1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+
+{
+  "name": "Store12",
+  "location": "string",
+  "description": "string",
+  "openingTime": "01:00:00",
+  "closingTime": "23:50:00",
+  "isAvaliableReservation": true,
+  "maxReservationPeople": 4
+}
+
+### store-contorller -/store/partner/create
+POST http://localhost:8085/store/partner/create
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+
+{
+  "name": "Store13",
+  "location": "string",
+  "description": "string",
+  "openingTime": "01:00:00",
+  "closingTime": "23:50:00",
+  "isAvaliableReservation": true,
+  "maxReservationPeople": 4
+}
+
+
+
+### store-contorller -/store/search
+GET http://localhost:8085/store/search?keyWord=Store
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+
+### store-contorller -/store/partner/stores-info
+GET http://localhost:8085/store/partner/stores-info
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+
+### store-contorller -/store/partner/delete/{storeId}
+DELETE http://localhost:8085/store/partner/delete/2
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+
+######################################################
+/
+
+### reservation-controller - /reservation/customer/create
+POST http://localhost:8085/reservation/customer/create
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwMzk3MTYzMCwiZXhwIjoxNzA0MDU4MDMwfQ.oZ-Q9eoZU6vQJguK0uOfXUYTjpbAHjgqQgBOt5irSKQ
+
+{
+  "storeName": "Store12",
+  "reservationName": "chan",
+  "reservationPhone": "000000000",
+  "reservationTime": "2023-12-30T21:48:19.517Z",
+  "numberOfPerson": 1
+}

@@ -30,7 +30,7 @@ public class ReservationService {
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
 
         // 운영시간 확인 , 예약가능매장 여부확인, 예약인원확인
-        verifyCreateReservation(form,store);
+        verifyCreateReservation(form, store);
 
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
@@ -48,10 +48,13 @@ public class ReservationService {
         return reservationRepository.save(newReservation);
     }
 
-    private void verifyCreateReservation(ReservationForm form, Store store){
+    private void verifyCreateReservation(ReservationForm form, Store store) {
 
         if (!store.getIsAvaliableReservation()) {
             throw new CustomException(ErrorCode.NOT_AVAILABLE_RESERVATION_STORE);
+        }
+        if (!(form.getNumberOfPerson() >= 1)) {
+            throw new CustomException(ErrorCode.TOO_LOW_RESERVATION_PEOPLE);
         }
 
         if (form.getNumberOfPerson() > store.getMaxReservationPeople()) {

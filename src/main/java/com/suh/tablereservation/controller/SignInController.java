@@ -5,6 +5,7 @@ import com.suh.tablereservation.service.SignInService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,13 +17,15 @@ public class SignInController {
 
 
     @PostMapping("/customer")
-    public ResponseEntity<String> customerSignInToken(SignInForm signInForm){
+    public ResponseEntity<String> customerSignInToken(
+            @RequestBody SignInForm signInForm){
         String token = signInService.customerSignInToken(signInForm);
         return ResponseEntity.ok(token);
     }
 
     @PostMapping("/partner")
-    public ResponseEntity<String> partnerSignInToken(SignInForm signInForm){
+    public ResponseEntity<String> partnerSignInToken(
+            @RequestBody SignInForm signInForm){
         String token = signInService.partnerSignInToken(signInForm);
         return ResponseEntity.ok(token);
     }
