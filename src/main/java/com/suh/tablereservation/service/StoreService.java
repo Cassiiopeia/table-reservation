@@ -21,21 +21,23 @@ public class StoreService {
     private final StoreRepository storeRepository;
     private final PartnerRepository partnerRepository;
 
-    public Store createStore(Long partnerId, StoreCreateForm storeCreateForm) {
-        if (storeRepository.findByName(storeCreateForm.getName()).isPresent()) {
-            throw new CustomException(ErrorCode.ALREADY_EXIST_STORE);
-        }
+    public Store createStore(Long partnerId, StoreCreateForm form) {
+
+        verifyCreateStore(form);
 
         Partner partner = partnerRepository.findById(partnerId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
 
         Store newStore = Store.builder()
-                .name(storeCreateForm.getName())
-                .location(storeCreateForm.getLocation())
-                .description(storeCreateForm.getDescription())
+                .name(form.getName())
+                .location(form.getLocation())
+                .description(form.getDescription())
+                .openingTime(form.getOpeningTime())
+                .closingTime(form.getClosingTime())
+                .isAvaliableReservation(form.getIsAvaliableReservation())
+                .maxReservationPeople(form.getMaxReservationPeople())
                 .partner(partner)
                 .build();
-
         return storeRepository.save(newStore);
     }
 
@@ -47,20 +49,29 @@ public class StoreService {
         return storeRepository.findByNameContainingIgnoreCase(storeName);
     }
 
-    public Store editStore(Long storeId, StoreEditForm storeEditForm, Long partnerId) {
-
-        // verify PartnerStoreExist
+    @Transactional
+    public Store editStore(Long storeId, StoreEditForm form, Long partnerId) {
         Store targetStore = storeRepository.findByIdAndPartnerId(storeId, partnerId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
 
-        if( !storeEditForm.getName().equals(targetStore.getName()) &&
-                storeRepository.findByName(storeEditForm.getName()).isPresent()){
+        if (!form.getName().equals(targetStore.getName()) &&
+                storeRepository.findByName(form.getName()).isPresent()) {
             throw new CustomException(ErrorCode.ALREADY_EXIST_STORE);
         }
 
-        targetStore.setName(storeEditForm.getName());
-        targetStore.setLocation(storeEditForm.getLocation());
-        targetStore.setDescription(storeEditForm.getDescription());
+        if(form.getIsAvaliableReservation()){
+            if(!(form.getMaxReservationPeople() >=1)){
+                throw new CustomException(ErrorCode.INVALID_MAX_RESERVATION_PEOPLE_COUNT);
+            }
+        }
+
+        targetStore.setName(form.getName());
+        targetStore.setLocation(form.getLocation());
+        targetStore.setDescription(form.getDescription());
+        targetStore.setOpeningTime(form.getOpeningTime());
+        targetStore.setClosingTime(form.getClosingTime());
+        targetStore.setIsAvaliableReservation(form.getIsAvaliableReservation());
+        targetStore.setMaxReservationPeople(form.getMaxReservationPeople());
 
         return storeRepository.save(targetStore);
     }
@@ -73,5 +84,17 @@ public class StoreService {
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
 
         storeRepository.deleteById(storeId);
+    }
+
+    private void verifyCreateStore(StoreCreateForm form){
+        if (storeRepository.findByName(form.getName()).isPresent()) {
+            throw new CustomException(ErrorCode.ALREADY_EXIST_STORE);
+        }
+
+        if(form.getIsAvaliableReservation()){
+            if(!(form.getMaxReservationPeople() >=1)){
+                throw new CustomException(ErrorCode.INVALID_MAX_RESERVATION_PEOPLE_COUNT);
+            }
+        }
     }
 }

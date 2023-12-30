@@ -3,6 +3,8 @@ package com.suh.tablereservation.domain.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalTime;
+
 @Entity
 @Getter
 @Setter
@@ -20,7 +22,13 @@ public class Store extends BaseEntity {
     private String location;
     private String description;
 
+    private LocalTime openingTime;
+    private LocalTime closingTime;
+    private Boolean isAvaliableReservation;
+    private Integer maxReservationPeople;
+
     @ManyToOne
     @JoinColumn(name = "partner_id")
     private Partner partner;
+
 }
