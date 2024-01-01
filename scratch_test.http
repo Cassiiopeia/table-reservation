@@ -36,7 +36,7 @@ Content-Type: application/json
   "password": "string"
 }
 
-### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwMzk3MTYzMCwiZXhwIjoxNzA0MDU4MDMwfQ.oZ-Q9eoZU6vQJguK0uOfXUYTjpbAHjgqQgBOt5irSKQ
+### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDExODcwNSwiZXhwIjoxNzA0MjA1MTA1fQ.ucTu0F0iCA9xQDws_E2cOHjodaMb6zHg_1wGAZwLg8k
 
 ### sign-in-controller - partner
 POST http://localhost:8085/signin/partner
@@ -47,7 +47,8 @@ Content-Type: application/json
   "password": "string"
 }
 
-###eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+###eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+
 
 ######################################################
 /
@@ -86,15 +87,15 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 
 ### store-contorller -/store/search
 GET http://localhost:8085/store/search?keyWord=Store
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
 
 ### store-contorller -/store/partner/stores-info
 GET http://localhost:8085/store/partner/stores-info
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
 
 ### store-contorller -/store/partner/delete/{storeId}
 DELETE http://localhost:8085/store/partner/delete/2
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
 
 ######################################################
 /
@@ -102,7 +103,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 ### reservation-controller - /reservation/customer/create
 POST http://localhost:8085/reservation/customer/create
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwMzk3MTYzMCwiZXhwIjoxNzA0MDU4MDMwfQ.oZ-Q9eoZU6vQJguK0uOfXUYTjpbAHjgqQgBOt5irSKQ
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDExODcwNSwiZXhwIjoxNzA0MjA1MTA1fQ.ucTu0F0iCA9xQDws_E2cOHjodaMb6zHg_1wGAZwLg8k
 
 {
   "storeName": "Store12",
@@ -111,3 +112,15 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiO
   "reservationTime": "2023-12-30T21:48:19.517Z",
   "numberOfPerson": 1
 }
+
+### reservation-controller - /reservation/partner/store-reservation-info/{storeId}
+GET http://localhost:8085/reservation/partner/store-reservation-info/1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+
+### reservation-controller - /reservation/customer/reservations-info
+GET http://localhost:8085/reservation/customer/reservations-info
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDExODcwNSwiZXhwIjoxNzA0MjA1MTA1fQ.ucTu0F0iCA9xQDws_E2cOHjodaMb6zHg_1wGAZwLg8k
+
+
