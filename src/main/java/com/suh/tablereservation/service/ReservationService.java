@@ -1,7 +1,8 @@
 package com.suh.tablereservation.service;
 
 import com.suh.tablereservation.domain.common.ReservationStatus;
-import com.suh.tablereservation.domain.form.ReservationForm;
+import com.suh.tablereservation.domain.form.ReservationCreateForm;
+import com.suh.tablereservation.domain.form.ReservationEditForm;
 import com.suh.tablereservation.domain.model.Customer;
 import com.suh.tablereservation.domain.model.Reservation;
 import com.suh.tablereservation.domain.model.Store;
@@ -27,7 +28,7 @@ public class ReservationService {
     private final StoreRepository storeRepository;
 
     @Transactional
-    public Reservation createReservation(Long customerId, ReservationForm form) {
+    public Reservation createReservation(Long customerId, ReservationCreateForm form) {
         Store store = storeRepository.findByName(form.getStoreName())
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
 
@@ -37,7 +38,8 @@ public class ReservationService {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
 
-        String createdCode = UUID.randomUUID().toString().replace("-","");
+        // reservationCode 생성
+        String createdCode = UUID.randomUUID().toString().replace("-", "");
 
         Reservation newReservation = Reservation.builder()
                 .reservationTime(form.getReservationTime())
@@ -53,7 +55,7 @@ public class ReservationService {
         return reservationRepository.save(newReservation);
     }
 
-    private void verifyCreateReservation(ReservationForm form, Store store) {
+    private void verifyCreateReservation(ReservationCreateForm form, Store store) {
 
         if (!store.getIsAvaliableReservation()) {
             throw new CustomException(ErrorCode.NOT_AVAILABLE_RESERVATION_STORE);
@@ -113,6 +115,10 @@ public class ReservationService {
             throw new CustomException(ErrorCode.INVALID_VISIT_CONFIRM_TIME);
         }
 
+        if (reservation.getStatus().equals(ReservationStatus.CANCELLED)) {
+            throw new CustomException(ErrorCode.ALREADY_CANCELLED_RESERVATION_STATUS);
+        }
+
         if (reservation.getStatus().equals(ReservationStatus.REQUEST)) {
             throw new CustomException(ErrorCode.NOT_CONFIRMED_RESERVATION_STATUS);
         }
@@ -132,14 +138,71 @@ public class ReservationService {
             throw new CustomException(ErrorCode.INVALID_USER);
         }
 
-        if (!reservation.getStatus().equals(ReservationStatus.REQUEST)) {
-            throw new CustomException(ErrorCode.NOT_REQUEST_RESERVATION_STATUS);
+        if (reservation.getStatus().equals(ReservationStatus.CANCELLED)) {
+            throw new CustomException(ErrorCode.ALREADY_CANCELLED_RESERVATION_STATUS);
         }
 
         reservation.setStatus(ReservationStatus.CONFIRMED);
         return reservationRepository.save(reservation);
     }
 
+    @Transactional
+    public Reservation editReservation(Long customerId, Long reservationId,
+                                       ReservationEditForm form) {
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_RESERVATION));
+
+        if (!reservation.getCustomer().getId().equals(customerId)){
+            throw new CustomException(ErrorCode.INVALID_USER);
+        }
+
+        if (!isValidOperationTime(form.getReservationTime(), reservation.getStore())) {
+            throw new CustomException(ErrorCode.INVALID_STORE_OPERATION_TIME);
+        }
+
+        if (reservation.getStatus().equals(ReservationStatus.CANCELLED)) {
+            throw new CustomException(ErrorCode.ALREADY_CANCELLED_RESERVATION_STATUS);
+        }
+
+        reservation.setReservationName(form.getReservationName());
+        reservation.setReservationPhone(form.getReservationPhone());
+        reservation.setReservationTime(form.getReservationTime());
+        reservation.setNumberOfPerson(form.getNumberOfPerson());
+        return reservationRepository.save(reservation);
+
+    }
+
+    @Transactional
+    public Reservation cancelReservation(Long customerId, Long reservationId) {
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_RESERVATION));
+
+        verifyCancelReservation(customerId, reservation);
+
+        reservation.setStatus(ReservationStatus.CANCELLED);
+        return reservationRepository.save(reservation);
+    }
+
+    private void verifyCancelReservation(Long customerId, Reservation reservation) {
+        if (!reservation.getCustomer().getId().equals(customerId)) {
+            throw new CustomException(ErrorCode.INVALID_USER);
+        }
+        if (reservation.getStatus().equals(ReservationStatus.CANCELLED)) {
+            throw new CustomException(ErrorCode.ALREADY_CANCELLED_RESERVATION_STATUS);
+        }
+        if (reservation.getStatus().equals(ReservationStatus.VISITED)) {
+            throw new CustomException(ErrorCode.ALREADY_VISITED_RESERVATION_STATUS);
+        }
+        // 예약시간 24시간 전까지 취소가능
+        if (!isValidCancellableTime(reservation.getReservationTime())) {
+            throw new CustomException(ErrorCode.EXPIRED_RESERVATION_CANCELLATION_TIME);
+        }
+    }
+
+    private boolean isValidCancellableTime(LocalDateTime reservationTime) {
+        LocalDateTime now = LocalDateTime.now();
+        return now.isBefore(reservationTime.minusHours(24));
+    }
 
     private Boolean isValidOperationTime(LocalDateTime localDateTime, Store store) {
         LocalTime reservationTime = localDateTime.toLocalTime();
