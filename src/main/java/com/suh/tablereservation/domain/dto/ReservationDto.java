@@ -15,6 +15,7 @@ public class ReservationDto {
     private String reservationName;
     private Integer numberOfPerson;
     private ReservationStatus status;
+
     private Long customerId;
     private Long storeId;
 

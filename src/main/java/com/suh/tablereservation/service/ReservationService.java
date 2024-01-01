@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +47,26 @@ public class ReservationService {
                 .build();
 
         return reservationRepository.save(newReservation);
+    }
+
+    public List<Reservation> getReservationsByCustomer(Long customerId){
+
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
+
+        return reservationRepository.findAllByCustomerId(customerId);
+
+    }
+
+    public List<Reservation> getReservationsByStore(Long partnerId, Long storeId){
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
+
+        if(!store.getPartner().getId().equals(partnerId)){
+            throw new CustomException(ErrorCode.UNAUTHORIZED_USER);
+        }
+
+        return reservationRepository.findAllByStoreId(storeId);
     }
 
     private void verifyCreateReservation(ReservationForm form, Store store) {

@@ -10,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/reservation")
@@ -21,11 +24,41 @@ public class ReservationController {
     public ResponseEntity<ReservationDto> createResrvation(
             @RequestHeader(name = "X-AUTH-TOKEN") String token,
             @RequestBody ReservationForm form
-            ){
+    ) {
         UserDto userDto = provider.getUserDto(token);
         Reservation reservation
                 = reservationService.createReservation(userDto.getId(), form);
 
         return ResponseEntity.ok(ReservationDto.from(reservation));
     }
+
+    @GetMapping("/customer/reservations-info")
+    public ResponseEntity<List<ReservationDto>> getReservationsByCustomer(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token
+    ) {
+        UserDto userDto = provider.getUserDto(token);
+        List<Reservation> reservationDtos
+                = reservationService.getReservationsByCustomer(userDto.getId());
+
+        return ResponseEntity.ok(reservationDtos.stream()
+                .map(ReservationDto::from)
+                .collect(Collectors.toList()));
+
+    }
+
+    @GetMapping("/partner/store-reservation-info/{storeId}")
+    public ResponseEntity<List<ReservationDto>> getReservationByStore(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @PathVariable Long storeId
+    ) {
+
+        UserDto userDto = provider.getUserDto(token);
+        List<Reservation> reservationDtos
+                = reservationService.getReservationsByStore(userDto.getId(), storeId);
+
+        return ResponseEntity.ok(reservationDtos.stream()
+                .map(ReservationDto::from)
+                .collect(Collectors.toList()));
+    }
+
 }
