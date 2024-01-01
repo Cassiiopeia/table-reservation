@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -36,37 +37,20 @@ public class ReservationService {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
 
+        String createdCode = UUID.randomUUID().toString().replace("-","");
+
         Reservation newReservation = Reservation.builder()
                 .reservationTime(form.getReservationTime())
                 .status(ReservationStatus.REQUEST)
                 .reservationPhone(form.getReservationPhone())
                 .reservationName(form.getReservationName())
                 .numberOfPerson(form.getNumberOfPerson())
+                .reservationCode(createdCode)
                 .customer(customer)
                 .store(store)
                 .build();
 
         return reservationRepository.save(newReservation);
-    }
-
-    public List<Reservation> getReservationsByCustomer(Long customerId){
-
-        Customer customer = customerRepository.findById(customerId)
-                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
-
-        return reservationRepository.findAllByCustomerId(customerId);
-
-    }
-
-    public List<Reservation> getReservationsByStore(Long partnerId, Long storeId){
-        Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
-
-        if(!store.getPartner().getId().equals(partnerId)){
-            throw new CustomException(ErrorCode.UNAUTHORIZED_USER);
-        }
-
-        return reservationRepository.findAllByStoreId(storeId);
     }
 
     private void verifyCreateReservation(ReservationForm form, Store store) {
@@ -87,10 +71,91 @@ public class ReservationService {
         }
     }
 
+
+    @Transactional(readOnly = true)
+    public List<Reservation> getReservationsByCustomer(Long customerId) {
+
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
+
+        return reservationRepository.findAllByCustomerId(customerId);
+
+    }
+
+    @Transactional(readOnly = true)
+    public List<Reservation> getReservationsByStore(Long partnerId, Long storeId) {
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_STORE));
+
+        if (!store.getPartner().getId().equals(partnerId)) {
+            throw new CustomException(ErrorCode.UNAUTHORIZED_USER);
+        }
+
+        return reservationRepository.findAllByStoreId(storeId);
+    }
+
+    @Transactional
+    public Reservation confirmVisit(String reservationCode) {
+
+        Reservation reservation = reservationRepository.findByReservationCode(reservationCode)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_RESERVATION));
+
+        verifyConfirmVisit(reservation);
+
+        reservation.setStatus(ReservationStatus.VISITED);
+
+        return reservationRepository.save(reservation);
+    }
+
+    private void verifyConfirmVisit(Reservation reservation) {
+        // 방문확인 시간이 유효한지 확인 ( 예약시간 10분 이내~ 1시간이후)
+        if (!isValidConfirmVisitTime(reservation.getReservationTime())) {
+            throw new CustomException(ErrorCode.INVALID_VISIT_CONFIRM_TIME);
+        }
+
+        if (reservation.getStatus().equals(ReservationStatus.REQUEST)) {
+            throw new CustomException(ErrorCode.NOT_CONFIRMED_RESERVATION_STATUS);
+        }
+
+        if (reservation.getStatus().equals(ReservationStatus.VISITED)) {
+            throw new CustomException(ErrorCode.ALREADY_VISITED_RESERVATION_STATUS);
+        }
+    }
+
+    @Transactional
+    public Reservation confirmReservation(Long partnerId, Long reservationId) {
+
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_RESERVATION));
+
+        if (!reservation.getStore().getPartner().getId().equals(partnerId)) {
+            throw new CustomException(ErrorCode.INVALID_USER);
+        }
+
+        if (!reservation.getStatus().equals(ReservationStatus.REQUEST)) {
+            throw new CustomException(ErrorCode.NOT_REQUEST_RESERVATION_STATUS);
+        }
+
+        reservation.setStatus(ReservationStatus.CONFIRMED);
+        return reservationRepository.save(reservation);
+    }
+
+
     private Boolean isValidOperationTime(LocalDateTime localDateTime, Store store) {
         LocalTime reservationTime = localDateTime.toLocalTime();
 
         return reservationTime.isBefore(store.getClosingTime()) &&
-                reservationTime.isAfter(store.getOpeningTime());
+                reservationTime.isAfter(store.getOpeningTime()) ||
+                reservationTime.equals(store.getClosingTime()) ||
+                reservationTime.equals(store.getOpeningTime());
     }
+
+    private Boolean isValidConfirmVisitTime(LocalDateTime reservationTime) {
+        LocalDateTime curTime = LocalDateTime.now();
+        return curTime.isAfter(reservationTime.minusMinutes(10)) &&
+                curTime.isBefore(reservationTime.plusMinutes(60)) ||
+                curTime.equals(reservationTime.minusMinutes(10)) ||
+                curTime.equals(reservationTime.plusMinutes(60));
+    }
+
 }

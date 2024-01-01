@@ -36,7 +36,8 @@ Content-Type: application/json
   "password": "string"
 }
 
-### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDExODcwNSwiZXhwIjoxNzA0MjA1MTA1fQ.ucTu0F0iCA9xQDws_E2cOHjodaMb6zHg_1wGAZwLg8k
+### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
+
 
 ### sign-in-controller - partner
 POST http://localhost:8085/signin/partner
@@ -56,7 +57,7 @@ Content-Type: application/json
 ### store-contorller -/store/partner/edit/{storeId}
 PUT http://localhost:8085/store/partner/edit/1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
 
 {
   "name": "Store12",
@@ -71,13 +72,13 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 ### store-contorller -/store/partner/create
 POST http://localhost:8085/store/partner/create
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzAzOTcxNjYwLCJleHAiOjE3MDQwNTgwNjB9.DVST-zS-yazUx-sevqVCaoNV7PCZIf4-FFuoK9uYZgc
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
 
 {
-  "name": "Store13",
+  "name": "Store1",
   "location": "string",
   "description": "string",
-  "openingTime": "01:00:00",
+  "openingTime": "00:01:00",
   "closingTime": "23:50:00",
   "isAvaliableReservation": true,
   "maxReservationPeople": 4
@@ -103,14 +104,14 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 ### reservation-controller - /reservation/customer/create
 POST http://localhost:8085/reservation/customer/create
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDExODcwNSwiZXhwIjoxNzA0MjA1MTA1fQ.ucTu0F0iCA9xQDws_E2cOHjodaMb6zHg_1wGAZwLg8k
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
 
 {
-  "storeName": "Store12",
+  "storeName": "Store1",
   "reservationName": "chan",
-  "reservationPhone": "000000000",
-  "reservationTime": "2023-12-30T21:48:19.517Z",
-  "numberOfPerson": 1
+  "reservationPhone": "00011000000",
+  "reservationTime": "2024-01-02T01:50:00",
+  "numberOfPerson": 2
 }
 
 ### reservation-controller - /reservation/partner/store-reservation-info/{storeId}
@@ -121,6 +122,13 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 ### reservation-controller - /reservation/customer/reservations-info
 GET http://localhost:8085/reservation/customer/reservations-info
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDExODcwNSwiZXhwIjoxNzA0MjA1MTA1fQ.ucTu0F0iCA9xQDws_E2cOHjodaMb6zHg_1wGAZwLg8k
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
 
+### reservation-controller - /reservation/kiosk/visit-confirm/{reservationCode}
+POST http://localhost:8085/reservation/kiosk/visit-confirm/f03bac87f11b40c28bdf3abe2852b464
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
 
+### reservation-controller - /reservation/partner/confirm/{reservationId}
+POST http://localhost:8085/reservation/partner/confirm/1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk

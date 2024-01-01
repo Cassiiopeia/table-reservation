@@ -20,6 +20,14 @@ public enum ErrorCode {
     NOT_AVAILABLE_RESERVATION_STORE(HttpStatus.BAD_REQUEST, "예약가능한 매장이 아닙니다."),
     TOO_MANY_RESERVATION_PEOPLE(HttpStatus.BAD_REQUEST, "예약가능 인원을 초과합니다."),
     TOO_LOW_RESERVATION_PEOPLE(HttpStatus.BAD_REQUEST, "예약 인원은 최소 1명 이상이여야합니다."),
+    NOT_FOUND_RESERVATION(HttpStatus.BAD_REQUEST, "예약을 찾을 수 없습니다."),
+
+    NOT_REQUEST_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "이미 승인되거나 완료된 예약입니다"),
+    NOT_CONFIRMED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "승인되지않은 예약입니다"),
+    ALREADY_VISITED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "이미 방문확인된 예약입니다"),
+
+    INVALID_VISIT_CONFIRM_TIME(HttpStatus.BAD_REQUEST, "방문확인 가능시간이 아닙니다." +
+            "(예약시간 10분 이내부터 1시간이후까지 방문확인이 가능합니다.)"),
 
     // HttpStatus.UNAUTHORIZED
     INVALID_PASSWORD(HttpStatus.UNAUTHORIZED, "잘못된 비밀번호입니다."),
