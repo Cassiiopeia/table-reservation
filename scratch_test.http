@@ -36,8 +36,7 @@ Content-Type: application/json
   "password": "string"
 }
 
-### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
-
+### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
 
 ### sign-in-controller - partner
 POST http://localhost:8085/signin/partner
@@ -48,8 +47,7 @@ Content-Type: application/json
   "password": "string"
 }
 
-###eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
-
+###eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
 ######################################################
 /
@@ -57,10 +55,10 @@ Content-Type: application/json
 ### store-contorller -/store/partner/edit/{storeId}
 PUT http://localhost:8085/store/partner/edit/1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
 {
-  "name": "Store12",
+  "name": "Store1",
   "location": "string",
   "description": "string",
   "openingTime": "01:00:00",
@@ -72,7 +70,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 ### store-contorller -/store/partner/create
 POST http://localhost:8085/store/partner/create
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
 {
   "name": "Store1",
@@ -88,15 +86,15 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 
 ### store-contorller -/store/search
 GET http://localhost:8085/store/search?keyWord=Store
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
 ### store-contorller -/store/partner/stores-info
 GET http://localhost:8085/store/partner/stores-info
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
 ### store-contorller -/store/partner/delete/{storeId}
 DELETE http://localhost:8085/store/partner/delete/2
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
 ######################################################
 /
@@ -104,31 +102,48 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 ### reservation-controller - /reservation/customer/create
 POST http://localhost:8085/reservation/customer/create
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
 
 {
   "storeName": "Store1",
   "reservationName": "chan",
   "reservationPhone": "00011000000",
-  "reservationTime": "2024-01-02T01:50:00",
+  "reservationTime": "2024-01-02T03:50:00",
   "numberOfPerson": 2
 }
 
 ### reservation-controller - /reservation/partner/store-reservation-info/{storeId}
 GET http://localhost:8085/reservation/partner/store-reservation-info/1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
 ### reservation-controller - /reservation/customer/reservations-info
 GET http://localhost:8085/reservation/customer/reservations-info
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
 
 ### reservation-controller - /reservation/kiosk/visit-confirm/{reservationCode}
 POST http://localhost:8085/reservation/kiosk/visit-confirm/f03bac87f11b40c28bdf3abe2852b464
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTI5OTE5LCJleHAiOjE3MDQyMTYzMTl9.wMMELGcr1levieDpBM0E4s7Mv66n35THCu5bvj_IYZ4
 
 ### reservation-controller - /reservation/partner/confirm/{reservationId}
 POST http://localhost:8085/reservation/partner/confirm/1
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTE4NzM4LCJleHAiOjE3MDQyMDUxMzh9.HSAcOZPSLzONzC3rHS2Z_I7N42iK0MmWMG_1QZLZivk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
+
+### reservation-controller -/reservation/customer/cancel/{reservationId}
+POST http://localhost:8085/reservation/customer/cancel/1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
+
+
+### reservation-controller - /reservation/customer/edit/{reservationId}
+PUT http://localhost:8085/reservation/customer/edit/1
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
+
+{
+  "reservationName": "editedSuhSaechan",
+  "reservationPhone": "010345654",
+  "reservationTime": "2024-01-05T18:46:30.480Z",
+  "numberOfPerson": 3
+}

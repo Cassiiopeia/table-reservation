@@ -21,9 +21,10 @@ public enum ErrorCode {
     TOO_MANY_RESERVATION_PEOPLE(HttpStatus.BAD_REQUEST, "예약가능 인원을 초과합니다."),
     TOO_LOW_RESERVATION_PEOPLE(HttpStatus.BAD_REQUEST, "예약 인원은 최소 1명 이상이여야합니다."),
     NOT_FOUND_RESERVATION(HttpStatus.BAD_REQUEST, "예약을 찾을 수 없습니다."),
+    EXPIRED_RESERVATION_CANCELLATION_TIME(HttpStatus.BAD_REQUEST, "예약을 취소가능시간이 지났습니다.(24시간 전까지 취소가능"),
 
-    NOT_REQUEST_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "이미 승인되거나 완료된 예약입니다"),
     NOT_CONFIRMED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "승인되지않은 예약입니다"),
+    ALREADY_CANCELLED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "이미 취소된 예약입니다"),
     ALREADY_VISITED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "이미 방문확인된 예약입니다"),
 
     INVALID_VISIT_CONFIRM_TIME(HttpStatus.BAD_REQUEST, "방문확인 가능시간이 아닙니다." +

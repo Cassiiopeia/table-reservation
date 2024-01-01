@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class ReservationForm {
+public class ReservationCreateForm {
     private String storeName;
     private String reservationName;
     private String reservationPhone;

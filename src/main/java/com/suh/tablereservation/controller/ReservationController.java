@@ -3,7 +3,8 @@ package com.suh.tablereservation.controller;
 import com.suh.tablereservation.config.JwtAuthenticationProvider;
 import com.suh.tablereservation.domain.common.UserDto;
 import com.suh.tablereservation.domain.dto.ReservationDto;
-import com.suh.tablereservation.domain.form.ReservationForm;
+import com.suh.tablereservation.domain.form.ReservationCreateForm;
+import com.suh.tablereservation.domain.form.ReservationEditForm;
 import com.suh.tablereservation.domain.model.Reservation;
 import com.suh.tablereservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class ReservationController {
     @PostMapping("/customer/create")
     public ResponseEntity<ReservationDto> createResrvation(
             @RequestHeader(name = "X-AUTH-TOKEN") String token,
-            @RequestBody ReservationForm form
+            @RequestBody ReservationCreateForm form
     ) {
         UserDto userDto = provider.getUserDto(token);
         Reservation reservation
@@ -82,4 +83,30 @@ public class ReservationController {
 
         return ResponseEntity.ok(ReservationDto.from(reservation));
     }
+
+    @PutMapping("/customer/edit/{reservationId}")
+    public ResponseEntity<ReservationDto> editReservation(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @PathVariable Long reservationId,
+            @RequestBody ReservationEditForm form
+    ) {
+        UserDto userDto = provider.getUserDto(token);
+        Reservation reservation
+                = reservationService.editReservation(
+                        userDto.getId(), reservationId, form);
+
+        return ResponseEntity.ok(ReservationDto.from(reservation));
+    }
+
+    @PostMapping("/customer/cancel/{reservationId}")
+    public ResponseEntity<ReservationDto> cancelReservation(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @PathVariable Long reservationId
+    ){
+        UserDto userDto = provider.getUserDto(token);
+        Reservation reservation = reservationService.cancelReservation(
+                userDto.getId(), reservationId);
+        return ResponseEntity.ok(ReservationDto.from(reservation));
+    }
+
 }
