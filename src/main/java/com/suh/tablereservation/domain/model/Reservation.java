@@ -22,6 +22,8 @@ public class Reservation extends BaseEntity {
     private String reservationName;
     private Integer numberOfPerson;
 
+    private String reservationCode;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;

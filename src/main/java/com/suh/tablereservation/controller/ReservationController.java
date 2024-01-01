@@ -61,4 +61,25 @@ public class ReservationController {
                 .collect(Collectors.toList()));
     }
 
+    @PostMapping("partner/confirm/{reservationId}")
+    public ResponseEntity<ReservationDto> confirmReservation(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @PathVariable Long reservationId
+    ) {
+        UserDto userDto = provider.getUserDto(token);
+        Reservation reservation = reservationService.confirmReservation(
+                userDto.getId(), reservationId);
+
+        return ResponseEntity.ok(ReservationDto.from(reservation));
+    }
+
+    @PostMapping("kiosk/visit-confirm/{reservationCode}")
+    public ResponseEntity<ReservationDto> confirmVisit(
+            @PathVariable String reservationCode
+    ) {
+        Reservation reservation = reservationService.confirmVisit(
+                reservationCode);
+
+        return ResponseEntity.ok(ReservationDto.from(reservation));
+    }
 }
