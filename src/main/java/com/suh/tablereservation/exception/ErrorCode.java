@@ -26,6 +26,11 @@ public enum ErrorCode {
     NOT_CONFIRMED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "승인되지않은 예약입니다"),
     ALREADY_CANCELLED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "이미 취소된 예약입니다"),
     ALREADY_VISITED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "이미 방문확인된 예약입니다"),
+    NOT_VISITED_RESERVATION_STATUS(HttpStatus.BAD_REQUEST, "방문 확인되지 않은 예약입니다."),
+
+    ALREADY_EXIST_REVIEW(HttpStatus.BAD_REQUEST, "해당 예약에 대한 리뷰가 이미 존재합니다."),
+    EXPIRED_REVIEW_CREATE_TIME(HttpStatus.BAD_REQUEST, "리뷰는 매장 방문 30일 이전에 작성 가능합니다."),
+
 
     INVALID_VISIT_CONFIRM_TIME(HttpStatus.BAD_REQUEST, "방문확인 가능시간이 아닙니다." +
             "(예약시간 10분 이내부터 1시간이후까지 방문확인이 가능합니다.)"),

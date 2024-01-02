@@ -107,9 +107,9 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiO
 {
   "storeName": "Store1",
   "reservationName": "chan",
-  "reservationPhone": "00011000000",
-  "reservationTime": "2024-01-02T03:50:00",
-  "numberOfPerson": 2
+  "reservationPhone": "000110243r0",
+  "reservationTime": "2024-01-02T21:20:00",
+  "numberOfPerson": 3
 }
 
 ### reservation-controller - /reservation/partner/store-reservation-info/{storeId}
@@ -123,10 +123,10 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
 
 ### reservation-controller - /reservation/kiosk/visit-confirm/{reservationCode}
-POST http://localhost:8085/reservation/kiosk/visit-confirm/f03bac87f11b40c28bdf3abe2852b464
+POST http://localhost:8085/reservation/kiosk/visit-confirm/fb48f9f8cdcc48109af7195da62bcada
 
 ### reservation-controller - /reservation/partner/confirm/{reservationId}
-POST http://localhost:8085/reservation/partner/confirm/1
+POST http://localhost:8085/reservation/partner/confirm/3
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
 
@@ -146,4 +146,18 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiO
   "reservationPhone": "010345654",
   "reservationTime": "2024-01-05T18:46:30.480Z",
   "numberOfPerson": 3
+}
+
+################################################
+/리뷰작성
+
+### review-controller - /review/create
+POST http://localhost:8085/review/create
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
+
+{
+  "reservationId": 3,
+  "rating": 5,
+  "content": "맛있어요 강추함"
 }
