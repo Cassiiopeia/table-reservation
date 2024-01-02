@@ -11,6 +11,8 @@
 - Store : 매장
 - Customer : 소비자 회원
 - Partner : 매장관리자 회원
+- Reservation : 예약
+- Review : 리뷰
   
 ## 필요 기능
 ---
@@ -68,7 +70,10 @@
 
 - [X] 리뷰 수정 (리뷰작성 Customer만 수정가능)
 - [X] 리뷰 삭제 (리뷰작성 Customer, 해당 Store의 Partner가 삭제가능)
+- [X] 리뷰 조회 ( Customer의 리뷰 조회 : Customer만 조회가능 )
+- [X] 리뷰 조회 ( Store의 리뷰 조회 : Store의 Partner만 조회가능 )
 
 ### 더 생각해야할점
 - [ ] 예약시간이 지나면 자동으로 예약상태가 EXPIRED로 바뀌어야함
 - [ ] Store의 Partner의 변경이 있을시 조건 필요
+- [ ] api분리 : 여러폴더로 나눠야하는데 어떤식으로 나눠야할지 모르겠다.
