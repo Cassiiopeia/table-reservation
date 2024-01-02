@@ -2,6 +2,8 @@ package com.suh.tablereservation.config;
 
 import com.suh.tablereservation.domain.common.UserType;
 import com.suh.tablereservation.domain.common.UserDto;
+import com.suh.tablereservation.exception.CustomException;
+import com.suh.tablereservation.exception.ErrorCode;
 import com.suh.tablereservation.util.Aes256Util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -34,14 +36,16 @@ public class JwtAuthenticationProvider {
                 .compact();
     }
 
-    public boolean validateToken(String jwtToken){
+    public void validateToken(String jwtToken){
         try{
             Jws<Claims> claimsJws = Jwts.parser()
                     .setSigningKey(secretKey)
                     .parseClaimsJws(jwtToken);
-            return claimsJws.getBody().getExpiration().after(new Date());
+            if( claimsJws.getBody().getExpiration().after(new Date())){
+                throw new CustomException(ErrorCode.EXPIRED_TOKEN);
+            }
         } catch ( Exception e){
-            return false;
+            throw new CustomException(ErrorCode.INVALID_TOKEN);
         }
     }
 

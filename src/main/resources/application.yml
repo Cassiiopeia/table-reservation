@@ -14,7 +14,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
 jwt:
   secretKey: "secretKey"
   tokenValidTime: 86400000 #1000L * 60 * 60 * 24
