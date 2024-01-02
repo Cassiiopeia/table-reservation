@@ -36,7 +36,10 @@ Content-Type: application/json
   "password": "string"
 }
 
-### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
+### eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDIwNDAwNCwiZXhwIjoxNzA0MjkwNDA0fQ.Ycr5fijuwDRSL5qXf6sx1U8SEeZl24NbHiiThrqVUZI
+
+
+
 
 ### sign-in-controller - partner
 POST http://localhost:8085/signin/partner
@@ -47,7 +50,9 @@ Content-Type: application/json
   "password": "string"
 }
 
-###eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
+###eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MjA0MDE3LCJleHAiOjE3MDQyOTA0MTd9.nsYBXyGtGs97sZN17hISYEkK3ju3b8aBxv_qem78D0E
+
+
 
 ######################################################
 /
@@ -70,7 +75,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiO
 ### store-contorller -/store/partner/create
 POST http://localhost:8085/store/partner/create
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MjA0MDE3LCJleHAiOjE3MDQyOTA0MTd9.nsYBXyGtGs97sZN17hISYEkK3ju3b8aBxv_qem78D0E
 
 {
   "name": "Store1",
@@ -151,8 +156,8 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiO
 ################################################
 /리뷰작성
 
-### review-controller - /review/create
-POST http://localhost:8085/review/create
+### review-controller - /review/customer/create
+POST http://localhost:8085/review/customer/create
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
 
@@ -161,3 +166,22 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiO
   "rating": 5,
   "content": "맛있어요 강추함"
 }
+
+
+### review-controller - customer/review/{reviewId}
+PUT http://localhost:8085/review/customer/edit/2
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBuYXZlci5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJDVVNUT01FUiIsImlhdCI6MTcwNDEzNDQ2OCwiZXhwIjoxNzA0MjIwODY4fQ.NF_2GYyt0bxFrGWIa-56FFnGIV1MFOuZaHSheNl_3lM
+
+{
+  "rating": 3,
+  "content": "잘 생각해보니까 좀 맛이없어요"
+}
+
+
+
+### review-controller - /review/delete/{reviewId}
+DELETE http://localhost:8085/review/delete/3
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFuNDc2MEBnbWFpbC5jb20iLCJqdGkiOiIxIiwicm9sZXMiOiJQQVJUTkVSIiwiaWF0IjoxNzA0MTM0NDgxLCJleHAiOjE3MDQyMjA4ODF9.Soshn293kO5bYugB-D8TLTua2XDYTzdTADWTFXfGhA4
+

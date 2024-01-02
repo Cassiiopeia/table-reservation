@@ -30,6 +30,7 @@ public enum ErrorCode {
 
     ALREADY_EXIST_REVIEW(HttpStatus.BAD_REQUEST, "해당 예약에 대한 리뷰가 이미 존재합니다."),
     EXPIRED_REVIEW_CREATE_TIME(HttpStatus.BAD_REQUEST, "리뷰는 매장 방문 30일 이전에 작성 가능합니다."),
+    NOT_FOUND_REVIEW(HttpStatus.BAD_REQUEST, "리뷰를 칠을 수 없습니다."),
 
 
     INVALID_VISIT_CONFIRM_TIME(HttpStatus.BAD_REQUEST, "방문확인 가능시간이 아닙니다." +
@@ -37,8 +38,10 @@ public enum ErrorCode {
 
     // HttpStatus.UNAUTHORIZED
     INVALID_PASSWORD(HttpStatus.UNAUTHORIZED, "잘못된 비밀번호입니다."),
-    INVALID_USER(HttpStatus.UNAUTHORIZED, "사용자가 일치하지않습니다."),
+    INVALID_USER(HttpStatus.UNAUTHORIZED, "사용자 접근이 제한되었습니다."),
     UNAUTHORIZED_USER(HttpStatus.UNAUTHORIZED, "사용자 권한이 없습니다."),
+    INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "토큰이 유효하지 않습니다."),
+    EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED, "토큰이 만료되었습니다."),
 
     NOT_FOUND_USER(HttpStatus.BAD_REQUEST, "회원을 찾을 수 없습니다.");
 

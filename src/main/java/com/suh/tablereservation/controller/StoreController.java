@@ -12,7 +12,6 @@ import com.suh.tablereservation.exception.CustomException;
 import com.suh.tablereservation.exception.ErrorCode;
 import com.suh.tablereservation.service.StoreService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,11 +56,6 @@ public class StoreController {
         @RequestHeader(name = "X-AUTH-TOKEN") String token,
         @RequestParam String keyWord
     ){
-        if(!provider.validateToken(token)){
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
-                    "Invalid token");
-        }
-
         List<Store> stores = storeService.searchStoresByName(keyWord);
         if(stores.isEmpty()){
             return ResponseEntity.ok("검색 결과가 없습니다.");
