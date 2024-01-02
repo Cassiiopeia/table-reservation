@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/review")
@@ -44,10 +47,35 @@ public class ReviewController {
     public ResponseEntity<Void> deleteReview(
             @RequestHeader(name = "X-AUTH-TOKEN") String token,
             @PathVariable Long reviewId
-    ){
+    ) {
         UserDto userDto = provider.getUserDto(token);
         reviewService.deleteReview(userDto.getId(), reviewId, userDto.getUserType());
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/customer/search")
+    public ResponseEntity<List<ReviewDto>> getCustomerReview(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token
+    ) {
+        UserDto userDto = provider.getUserDto(token);
+        List<Review> reviews = reviewService.getCustomerReview(userDto.getId());
+        return ResponseEntity.ok(reviews.stream()
+                .map(ReviewDto::from)
+                .collect(Collectors.toList())
+        );
+    }
+
+    @GetMapping("store/search/{storeId}")
+    public ResponseEntity<List<ReviewDto>> getStoreReview(
+            @RequestHeader(name = "X-AUTH-TOKEN") String token,
+            @PathVariable Long storeId
+    ) {
+        UserDto userDto = provider.getUserDto(token);
+        List<Review> reviews = reviewService.getStoreReview(userDto.getId(),
+                userDto.getUserType(), storeId);
+        return ResponseEntity.ok(reviews.stream()
+                .map(ReviewDto::from)
+                .collect(Collectors.toList()));
     }
 
 }
